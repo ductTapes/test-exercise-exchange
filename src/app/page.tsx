@@ -1,93 +1,206 @@
 import Image from 'next/image'
-import styles from './page.module.css'
+import Icon from '../components/atoms/Icon'
+import { ArrowRepeatIcon } from '../components/atoms/Icon/svg'
+import CryptoExchangeWidget from '../components/organisms/CryptoExchangeWidget'
+import './styles.css'
 
-export default function Home() {
+const getCryptoRates = async () => {
+  const response = await fetch('https://api.exchangerate.host/latest')
+
+  return response.json()
+}
+
+export default async function Home() {
+  // const cryptoRates = await getCryptoRates()
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>Instantly deploy your Next.js site to a shareable URL with Vercel.</p>
-        </a>
-      </div>
-    </main>
+    <div>
+      <CryptoExchangeWidget
+        className="homePage_cryptoExchangeWidget"
+        rates={mockRates.rates}
+        updateDate={mockRates.date}
+      />
+    </div>
   )
+}
+
+const mockRates = {
+  motd: {
+    msg: 'If you or your company use this project or like what we doing, please consider backing us so we can continue maintaining and evolving this project.',
+    url: 'https://exchangerate.host/#/donate',
+  },
+  success: true,
+  base: 'EUR',
+  date: '2023-06-21',
+  rates: {
+    AED: 4.006837,
+    AFN: 93.621645,
+    ALL: 107.332209,
+    AMD: 421.547297,
+    ANG: 1.968076,
+    AOA: 819.217161,
+    ARS: 271.999022,
+    AUD: 1.606543,
+    AWG: 1.967511,
+    AZN: 1.855322,
+    BAM: 1.955831,
+    BBD: 2.182279,
+    BDT: 118.194037,
+    BGN: 1.955426,
+    BHD: 0.412604,
+    BIF: 3085.529033,
+    BMD: 1.092265,
+    BND: 1.466342,
+    BOB: 7.547863,
+    BRL: 5.227169,
+    BSD: 1.092329,
+    BTC: 0.000038,
+    BTN: 89.684409,
+    BWP: 14.475435,
+    BYN: 2.756487,
+    BZD: 2.202171,
+    CAD: 1.441784,
+    CDF: 2580.260698,
+    CHF: 0.981372,
+    CLF: 0.03255,
+    CLP: 875.400054,
+    CNH: 7.850576,
+    CNY: 7.846939,
+    COP: 4552.370847,
+    CRC: 590.023421,
+    CUC: 1.091749,
+    CUP: 28.092268,
+    CVE: 110.194821,
+    CZK: 23.744448,
+    DJF: 194.456871,
+    DKK: 7.443837,
+    DOP: 60.042201,
+    DZD: 147.924858,
+    EGP: 33.735763,
+    ERN: 16.365225,
+    ETB: 60.01916,
+    EUR: 1,
+    FJD: 2.411201,
+    FKP: 0.855286,
+    GBP: 0.85518,
+    GEL: 2.842861,
+    GGP: 0.854792,
+    GHS: 12.397277,
+    GIP: 0.855161,
+    GMD: 64.910873,
+    GNF: 9390.960351,
+    GTQ: 8.551586,
+    GYD: 231.001948,
+    HKD: 8.537122,
+    HNL: 26.889471,
+    HRK: 7.530796,
+    HTG: 151.814247,
+    HUF: 371.664321,
+    IDR: 16332.493264,
+    ILS: 3.945428,
+    IMP: 0.855254,
+    INR: 89.517268,
+    IQD: 1429.641216,
+    IRR: 46092.01473,
+    ISK: 148.608037,
+    JEP: 0.855188,
+    JMD: 169.282538,
+    JOD: 0.774517,
+    JPY: 154.694816,
+    KES: 152.033923,
+    KGS: 95.28384,
+    KHR: 4506.124753,
+    KMF: 492.939916,
+    KPW: 981.842147,
+    KRW: 1409.045622,
+    KWD: 0.335641,
+    KYD: 0.910784,
+    KZT: 490.025728,
+    LAK: 20778.546657,
+    LBP: 16392.923005,
+    LKR: 336.405329,
+    LRD: 192.659828,
+    LSL: 19.899222,
+    LYD: 5.23582,
+    MAD: 10.935478,
+    MDL: 19.57332,
+    MGA: 4951.859594,
+    MKD: 61.58079,
+    MMK: 2293.533066,
+    MNT: 3839.001924,
+    MOP: 8.804462,
+    MRU: 37.745467,
+    MUR: 49.540467,
+    MVR: 16.752053,
+    MWK: 1120.986618,
+    MXN: 18.766564,
+    MYR: 5.072957,
+    MZN: 69.684683,
+    NAD: 20.051481,
+    NGN: 754.141477,
+    NIO: 39.945131,
+    NOK: 11.687989,
+    NPR: 143.490083,
+    NZD: 1.764092,
+    OMR: 0.420741,
+    PAB: 1.091807,
+    PEN: 3.963092,
+    PGK: 3.940511,
+    PHP: 60.642934,
+    PKR: 313.555999,
+    PLN: 4.44049,
+    PYG: 7905.071085,
+    QAR: 3.982132,
+    RON: 4.960653,
+    RSD: 117.205054,
+    RUB: 92.218249,
+    RWF: 1252.703083,
+    SAR: 4.091874,
+    SBD: 9.093198,
+    SCR: 14.610179,
+    SDG: 656.198048,
+    SEK: 11.764498,
+    SGD: 1.465806,
+    SHP: 0.854837,
+    SLL: 19271.372371,
+    SOS: 620.905733,
+    SRD: 41.019628,
+    SSP: 142.105716,
+    STD: 24899.496911,
+    STN: 24.484758,
+    SVC: 9.556893,
+    SYP: 2741.007609,
+    SZL: 19.8884,
+    THB: 37.985724,
+    TJS: 11.92785,
+    TMT: 3.829031,
+    TND: 3.369752,
+    TOP: 2.565366,
+    TRY: 25.765185,
+    TTD: 7.404202,
+    TWD: 33.776966,
+    TZS: 2605.153466,
+    UAH: 40.335765,
+    UGX: 4047.54616,
+    USD: 1.092327,
+    UYU: 41.4956,
+    UZS: 12549.516389,
+    VES: 29.695894,
+    VND: 25663.028317,
+    VUV: 129.799047,
+    WST: 2.97357,
+    XAF: 655.569712,
+    XAG: 0.047746,
+    XAU: 0.001728,
+    XCD: 2.948513,
+    XDR: 0.814906,
+    XOF: 655.570384,
+    XPD: 0.001776,
+    XPF: 119.262214,
+    XPT: 0.001688,
+    YER: 273.116064,
+    ZAR: 20.06851,
+    ZMW: 19.031102,
+    ZWL: 351.281557,
+  },
 }
