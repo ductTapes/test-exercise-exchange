@@ -1,9 +1,10 @@
 import CryptoExchangeWidget from 'src/components/organisms/CryptoExchangeWidget'
+import { fetchGetExchangeRates } from 'src/api/exchangerate/exchangerate.crud'
 
 import './styles.css'
 
 const getCryptoRates = async () => {
-  const response = await fetch('https://api.exchangerate.host/latest')
+  const response = await fetchGetExchangeRates()
 
   if (!response.ok) {
     throw new Error('Something went wrong')
