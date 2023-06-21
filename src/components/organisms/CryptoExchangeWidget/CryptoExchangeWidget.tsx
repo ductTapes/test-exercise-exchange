@@ -2,14 +2,13 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
+import clsx from 'src/helpers/clsx'
+import Select from 'src/components/atoms/inputs/Select'
+import Icon from 'src/components/atoms/Icon'
+import { ArrowRepeatIcon } from 'src/components/atoms/Icon/svg'
+import TextField from 'src/components/atoms/inputs/TextField'
 
 import { CryptoExchangeWidgetProps } from './types'
-import clsx from '../../../helpers/clsx'
-import Select from '../../atoms/inputs/Select'
-import Icon from '../../atoms/Icon'
-import { ArrowRepeatIcon } from '../../atoms/Icon/svg'
-import TextField from '../../atoms/inputs/TextField'
-
 import './styles.css'
 
 const CryptoExchangeWidget: React.FC<CryptoExchangeWidgetProps> = props => {

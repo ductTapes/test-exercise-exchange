@@ -1,4 +1,5 @@
-import CryptoExchangeWidget from '../components/organisms/CryptoExchangeWidget'
+import CryptoExchangeWidget from 'src/components/organisms/CryptoExchangeWidget'
+
 import './styles.css'
 
 const getCryptoRates = async () => {

@@ -1,9 +1,10 @@
 'use client'
 
-import './styles.css'
 import React from 'react'
+import clsx from 'src/helpers/clsx'
+
 import { TextFieldProps } from './types'
-import clsx from '../../../../helpers/clsx'
+import './styles.css'
 
 const TextField: React.FC<TextFieldProps> = props => {
   const { value, className = '', ...otherProps } = props
