@@ -1,21 +1,43 @@
 'use client'
 
 import React, { useState } from 'react'
+import Link from 'next/link'
+
 import { CryptoExchangeWidgetProps } from './types'
-import './styles.css'
 import clsx from '../../../helpers/clsx'
 import Select from '../../atoms/inputs/Select'
 import Icon from '../../atoms/Icon'
 import { ArrowRepeatIcon } from '../../atoms/Icon/svg'
+import TextField from '../../atoms/inputs/TextField'
+
+import './styles.css'
 
 const CryptoExchangeWidget: React.FC<CryptoExchangeWidgetProps> = props => {
   const { className = '', rates, updateDate } = props
 
   const [fromValue, setFromValue] = useState<string | undefined>()
   const [toValue, setToValue] = useState<string | undefined>()
+  const [amount, setAmount] = useState<string | undefined>()
+
+  const calculateResult = () => {
+    const numberAmount = Number((amount || '').replace(/,/g, '.'))
+
+    if (fromValue === toValue) {
+      return numberAmount
+    }
+
+    if (numberAmount > 0 && fromValue && toValue) {
+      return (numberAmount / rates[fromValue]) * rates[toValue]
+    }
+
+    return 0
+  }
+
+  console.log('amount', amount)
 
   return (
     <div className={clsx('cryptoExchangeWidget', className)}>
+      <p className="cryptoExchangeWidget_date">Update date: {updateDate}</p>
       <div className="cryptoExchangeWidget_selectContainer">
         <Select
           placeholder="Select currency"
@@ -47,6 +69,25 @@ const CryptoExchangeWidget: React.FC<CryptoExchangeWidgetProps> = props => {
           options={Object.keys(rates).map(currency => ({ value: currency, label: currency }))}
         />
       </div>
+      <div className="cryptoExchangeWidget_resultContainer">
+        <TextField
+          className="cryptoExchangeWidget_textField"
+          name="amount"
+          value={amount}
+          onChange={e => {
+            setAmount(e.target.value)
+          }}
+        />
+
+        <p className="cryptoExchangeWidget_result">Result: {calculateResult()}</p>
+      </div>
+      <Link
+        className="cryptoExchangeWidget_apiLink"
+        target="_blank"
+        href="https://exchangerate.host/#/"
+      >
+        api home
+      </Link>
     </div>
   )
 }

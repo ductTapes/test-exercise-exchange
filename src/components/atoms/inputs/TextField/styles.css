@@ -1,5 +1,5 @@
-.select {
+.textField {
   width: 100%;
-  cursor: pointer;
+  cursor: text;
   min-height: 2rem;
 }

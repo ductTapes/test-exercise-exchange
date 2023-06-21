@@ -6,11 +6,16 @@
   min-width: 20rem;
 }
 
+.cryptoExchangeWidget_date {
+  text-align: center;
+}
+
 .cryptoExchangeWidget_selectContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  margin-top: 1rem;
 }
 
 .cryptoExchangeWidget_reverseIconContainer {
@@ -21,9 +26,38 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  transition: transform 0.3s linear;
+}
+
+.cryptoExchangeWidget_reverseIconContainer:hover {
+  transform: rotate(180deg);
 }
 
 .cryptoExchangeWidget_reverseIconContainer svg {
   width: 100%;
   height: 100%;
+}
+
+.cryptoExchangeWidget_resultContainer {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+  margin-top: 1rem;
+}
+
+.cryptoExchangeWidget_textField {
+  width: 100%;
+}
+
+.cryptoExchangeWidget_result {
+  width: 100%;
+  font-size: 0.85rem;
+  word-break: break-all;
+}
+
+.cryptoExchangeWidget_apiLink {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  text-decoration: underline;
 }
