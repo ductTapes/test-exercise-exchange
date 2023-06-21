@@ -1,5 +1,5 @@
 export interface CryptoExchangeWidgetProps {
   className?: string
-  updateDate: Date
+  updateDate: string
   rates: Record<string, number>
 }

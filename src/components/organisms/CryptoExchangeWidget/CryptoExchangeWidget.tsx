@@ -14,9 +14,9 @@ import './styles.css'
 const CryptoExchangeWidget: React.FC<CryptoExchangeWidgetProps> = props => {
   const { className = '', rates, updateDate } = props
 
-  const [fromValue, setFromValue] = useState<string | undefined>()
-  const [toValue, setToValue] = useState<string | undefined>()
-  const [amount, setAmount] = useState<string | undefined>()
+  const [fromValue, setFromValue] = useState<string>('')
+  const [toValue, setToValue] = useState<string>('')
+  const [amount, setAmount] = useState<string>('')
 
   const calculateResult = () => {
     const numberAmount = Number((amount || '').replace(/,/g, '.'))
