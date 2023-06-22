@@ -10,15 +10,15 @@ const Select: React.FC<SelectProps> = props => {
   const { options, value, className = '', placeholder, ...otherProps } = props
 
   return (
-    <select {...otherProps} className={clsx('select', className)}>
+    <select {...otherProps} value={value} className={clsx('select', className)}>
       {placeholder && (
-        <option value="" disabled selected={!value}>
+        <option value="" disabled>
           {placeholder}
         </option>
       )}
 
       {options.map(option => (
-        <option key={option.value} value={option.value} selected={value === option.value}>
+        <option key={option.value} value={option.value}>
           {option.label}
         </option>
       ))}
