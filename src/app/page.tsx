@@ -1,5 +1,5 @@
 import CryptoExchangeWidget from 'src/components/organisms/CryptoExchangeWidget'
-import { fetchGetExchangeRates } from 'src/api/exchangerate/exchangerate.crud'
+import { fetchGetExchangeRates } from 'src/crud/exchangerate/exchangerate.crud'
 
 import './styles.css'
 
